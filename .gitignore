@@ -11,6 +11,17 @@ node_modules
 dist
 dist-ssr
 *.local
+eslint.config
+.eslintcache
+*.eslintrc
+package-lock.json
+package.json
+postcss.config.js
+tsconfig.json
+tailwind.config.js
+vite.config.js
+yarn.lock
+pnpm-lock.yaml
 
 # Editor directories and files
 .vscode/*

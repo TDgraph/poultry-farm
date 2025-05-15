@@ -1,15 +1,34 @@
-// import React from 'react';
-import FarmForm from './features/farm/farmForm';
 
-const App = () => {
-  return (
-    <div className="min-h-screen bg-gray-100 p-4">
-      <FarmForm />
-      <Route path="/daily-report" element={<DailyReportForm />} />
+// import { Toaster } from "@/components/ui/toaster";
+// import { Toaster as Sonner } from "@/components/ui/sonner";
+// import { TooltipProvider } from "@/components/ui/tooltip";
+// import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Provider } from "react-redux";
+// import { store } from "./app/store";
+import Index from "./pages/Index";
+import FarmManagement from "./pages/FarmManagement";
+// import NotFound from "./pages/NotFound";
 
-    </div>
-  );
-};
+const queryClient = new QueryClient();
 
+const App = () => (
+  <Provider store={store}>
+    <QueryClientProvider client={queryClient}>
+      <TooltipProvider>
+        <Toaster />
+        <Sonner />
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<Index />} />
+            <Route path="/farm-management" element={<FarmManagement />} />
+            {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </BrowserRouter>
+      </TooltipProvider>
+    </QueryClientProvider>
+  </Provider>
+);
 
 export default App;
